@@ -1,0 +1,5 @@
+net localgroup
+net user
+net localgroup administradores werner /add (adiciona werner ao grupo de administradores)
+netplwix (abre caixa dialogo de conta de usuarios)
+rundll32.exe PowrProf,SetSuspendState
