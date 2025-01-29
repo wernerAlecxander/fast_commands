@@ -4,13 +4,13 @@ git config --global core.editor vscode
 git config user.name
 git config user.email
 git config --list
-git init
+git init (1)
 git status	
-git add readme.txt
-git add -A
-git commit -m "first commit this projetc"
+git add readme.txt (2)
+git add -A (2)
+git commit -m "first commit this projetc" (3)
 git branch
-git commit -am "mensage"
+git commit -am "mensage" (3)
 git reset --soft bd3b408cb6bc0d65d8eae8b7d3a654ac4bdc257b (volta comit anterior e deixa as opçoes mudanças visíveis)
 git reset --mixed bd3b408cb6bc0d65d8eae8b7d3a654ac4bdc257b (volta alteração al=nterior do arquivo. Precisa comando add para depois comitar)
 git reset --hard bd3b408cb6bc0d65d8eae8b7d3a654ac4bdc257b (volta e apaga as mudanças anteriores)
@@ -29,10 +29,10 @@ ssh-keygen -t ed25519 -C "your_email@example.com" (cria uma chave pub e privada 
 ssh-add ~/.ssh/id_ed25519 (configura acesso remoto usando chave ed25519)
 ls -al ~/.ssh (verifica as chaves existentes)
 ssh -T git@github.com (conectar com git para usar conexão via cha priv)
-git remote add origin https://github.com/wernerAlecxander/modulogit.git
+git remote add origin https://github.com/wernerAlecxander/modulogit.git (4)
 git remote -v (ver repositorios remotos)
 git remote remove origin
-git push -u origin master (enviar do repositorio local para o remoto)
+git push -u origin master (enviar do repositorio local para o remoto) (5)
 git push origin master
 git revert --no-edit 7c8d4ec56q18ab30h7cd3b4c4da875ef29a34b24f1 (código hexadecimal do commit para reverter)
 git push origin :teste (deleta o branch teste do repositório remoto)
