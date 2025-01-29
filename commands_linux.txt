@@ -1,0 +1,57 @@
+ip a
+ip r
+ip -4 a
+ip -6 a
+ip show enp0s3
+ip link ls up
+ip a add 192.168.1.150/255.255.255.0 dev enp0s3
+ip a del 192.168.1.150/24 dev enp0s3
+ip link set enp0s3 up
+ip link set enp0s3 down
+apt install rsyslog
+systemctl disable apparmor.service
+apt install net-tools
+shutdown -h now
+reboot
+apt install ssh
+sudo apt-get install --fix-missing  
+sudo apt-get update && apt-get install traceroute
+ls -lha --format=[commas, semicolon, horizontal, vertical, across, single-column] 
+ls --inode
+ls -m
+ls /var/log -1
+ls -c /var/log (shows the last date of acess)
+ls -l -s /var/log (show the real file size)
+ls -ln /dev/ (show the user's uid)
+id -u (capture the user's uid)
+ls -c /var/log (shows the date of creation)
+ls -lAR (show recursively files and directories)
+ls- lAR | tail
+ls- lhS /var/log (S- size of the files first)
+ls -lhSr /sbin/ (l=long,h=human-redeable,S=size,r=recursive)
+cd - (back to the initial position)
+cd ../../../../ (back to the four position)
+mkdir -p /lesson/class/teacher (create de directory fhather and childs)
+mkdir -p relatories/mounth{01..12}/weeek{01..07}/
+mkdir -m 4775 datas
+touch file1 (create a file named file1 = OB: the command modify the time-stamp of the file, but, the people used for create file)
+touch -t 202509291945.33 arq1
+touch -at 202501281200.33 test
+touch -mt 202501281200.33 test (modify the time acess)
+alias cp='cp -i'
+unlias cp
+cp -r-v tes* /var/log
+cp -rfp /var/log/ /tmp/log (copy mantend the own original)
+alias mv='mv -i' (ask before to do it)
+rm -r (rm for stand dont erase directories, but, com option -r, he make it)
+ln login.defs login.copia3 (hard link)
+ln -s login.defs login.copia3 (soft link)
+file (type of the files and more informations = IMPORTANT: deserves to be studied)
+date MMDDhhmmYYYY.ss
+date %A (SUNDAY (example))
+date %a (saturday)
+locale
+export LC_TIME=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+locale
+export LC_ALL=pt_BR.UTF-8
