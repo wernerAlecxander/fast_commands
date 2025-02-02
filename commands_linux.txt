@@ -121,7 +121,7 @@ sed -i.copia 1s/^/'#!\/bin\/bash'/ filename
 sed -i.original /'#!\/bin\/bash'/d filename
 tr -s "a" < filename (show only time the letter a in the filename- "a")
 du -h /etc/ (show de size of de directory and subdirectories)
-du -h --max-depth=[0 or 1 or 2 or 3  or ...] /etc/ (how many drectories i want that the command show me)
+du -h --max-depth=[0 or 1 or 2 or 3  or ...] /etc/ (how many drectories I want that the command show me)
 df -h (show me the size occupated at the disks in the computer)
 df -h -T (show above options and the typeof the directories)
 df -h -t -x tmpfs -x dev -x usr (show me the size occupated at the disks in the computer, except /tmpfs /dev /usr)
@@ -169,3 +169,39 @@ echo "userhacker:senhax:1999:1999:userhacker:/home/userhacker:/bin/bash" >> /etc
 > filename (create filename empty)
 ls /var/log/teste/joao/nao/existe/este/diretorio 2> filename (directs the error message to filename)
 > filename (create a empty file)
+du -h --max-depth=3 / > tamanho-raiz.txt 2>> tamanho-raiz-erros.txt
+tr [a-z] [A-Z] < /etc/passwd
+-------------------------create a script fastly------------------
+cat << EOF > script.sh (change de output (EOF))
+#!/bin/bash             (call bash)
+ECHO=$(which echo)      (call any echo e put the variable ECHO)
+$ECHO "redirecionamento feito"  (execute ECHO)
+...
+commands
+....
+EOF                             (with EOF, indicating to the system the end of the script)
+----------------------------------------end----------------------
+grep root /var/log/auth.log | grep login | cut -d " " -f 1,2,3 
+grep root /var/log/auth.log | grep login | cut -d " " -f 1,2,3 > filename.txt (get the lines with the word 'root'in /var/)log/auth.log. After filter any line that have word 'login'. After cut columns 1,2 and 3.
+ls -l /etc/ | awk -F " " '{print $4,$5,$6,$7,$8,$9}' | grep -v root (ls -l in /etc/. After filter having as parameter, the spaces (awk -f " ") in columns 4 to 9. after filter the lines dont have root)
+cd /usr/share/doc ; ls -l ; sleep 10; cd ~; echo "sucesso" (executes each command in sequence, without caring if the previous command gave an error)
+cho 'hello world' | xxd -b (write hello world in binary)
+cd /usr/ && ls && sleep 4 && cd ~ && echo "sucesso" (if command 1 sucess execute command 2, if 2 sucess, execute 3, if sucess 3, execute 4 ...)
+cd /usr/ && ls && sleep 4 && cd ~ && echo "sucesso" || echo "falha" (if command 1 sucess execute command 2, if 2 sucess, execute 3, if sucess 3, execute 4 ..., if penultimate command failed, the last command call echo 'falha')
+for ((IP=1;IP<=11;IP++)); do ping -c 1 192.168.1.$IP && echo "192.168.1.$IP" >> ip-ok.txt || echo "192.168.1.$IP" >> ip-falha.txt; done
+whereis bash ; where login ; whereis shadow
+whick fsck
+updatedb (update the bank datas of the system and commands)
+grep -r update /etc/
+locate -i cron
+find /var/log/ -type f (search only type file)
+find /va/run/ -type -l (search only type simbolics links)
+find /va/run/ -type -s (search only type sockets)
+find /va/log/ -type -f -name *.gz
+find /var/log/ -type f -iname fi*.gz (search any file which name start with fi AND insensitive case)
+find /etc/ -type f -perm 755 (search file which permission is 755)
+find /etc/ -type f -perm 4755
+find / -type f -size 24k (search file whit size of the 24k)
+find / -type f -size +24k (search file with size more than 24k)
+find /etc/ -type f -amin 20 (search file with 20 min of the acess ago)
+find /etc/ -type f -amin +2 (search file with 2 days ago of the acess)
