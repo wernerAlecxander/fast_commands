@@ -43,11 +43,11 @@ unlias cp
 cp -r-v tes* /var/log
 cp -rfp /var/log/ /tmp/log (copy mantend the own original)
 alias mv='mv -i' (ask before to do it)
-rm -r (rm for stand dont erase directories, but, com option -r, he make it)
+rm -rf (rm for stand dont erase directories, but, com option -r, he make it)
 ln login.defs login.copia3 (hard link)
 ln -s login.defs login.copia3 (soft link)
 file (type of the files and more informations = IMPORTANT: deserves to be studied)
-date MMDDhhmmYYYY.ss
+date MMDDhhmmCCYY.ss
 date %A (SUNDAY (example))
 date %a (saturday)
 locale
@@ -55,3 +55,117 @@ export LC_TIME=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 locale
 export LC_ALL=pt_BR.UTF-8
+vi /etc/locale.gen
+locale-gen
+date +%d-%m-%Y-%H-%M
+hwclock (show the time of the hardware)
+hwclock (become equal the system time and hardware time)
+tzselect (time zone)
+vi /etc/localtime (in binary. show the local time of de time zone)
+tail -n 27 login.copia
+echo 'hello world' | xxd -b
+echo 'hello world' | xxd -b > binary.txt
+tail -c 200 login.bkp
+tail -f /var/log/syslog (keeps the session open with the latest logs being loaded on screen)
+cat -A login.copia (characters dont printer will show on the screen)
+cat -n login.copia (show the line number)
+cat -b login.copia (show the line number that have content usefull)
+cat -s login.copia
+nl -ba filename
+nl -bt filename
+wc filename (show the statistic of the file)
+wc -w filename
+wc -c filename
+sort filename (show orderely output on the screen)
+sort -n list.bkp
+sort -nrh list.bkp
+cut -c 1,3,7,11 filename (cut content of the columns 1,3,5,7 e 11)
+cut -d ":" -f 1,3,7 filename
+uniq filename (dont show lines repeated)
+uniq -c filename (how many times each line appeared)
+cut -d " " -f ,6 /var/log/auth.log | sort |uniq -capture
+uniq -d filename (line duplicate)
+uniq -u filename (line uniq)
+dd if=/dev/random of=/root/filename bs=1M count=300 (file with size 300 megabytes with content no-sense)
+split -b 10M filename filename.
+cat filename.* > filename.copy
+split -l 50 filename filename.
+diff filename filename.copy
+grep --ignore-case JOÃO filename
+grep -in http /etc/squid/squid.conf
+vi /etc/squid/squid.conf +7330
+grep -c USER filename (counts how many times the searched word appeared)
+egrep -c '(root|toor)' /var/log/auth.log (counts how many times the two searched words appeared)
+egrep -c -f filename /var/log/auth.log (counts how many times the words in the 'filename' appeared in the auth.log file)
+egrep ^$ /etc/login.defs (how many empty lines are there in the file)
+egrep -v ^$ /etc/login.defs (dont empty lines)
+egrep ^# /etc/login.defs (commented lines)
+egrep -v ^# /etc/login.defs (uncommented lines)
+egrep -v '(^#|^$)' /etc/login.defs (uncommented lines and non-empty lines)
+grep -r toor /etc/ (search for the file in the directory and all subdirectories)
+grep -rl toor /etc/ (show only the file and directory, dont the word 'toor')
+grep -rL toor /etc/ (show only the file and directory, where the word 'toor' not be)
+grep -m 25 http /etc/squid/squid.conf (the first 25 lines)
+grep http /etc/squid/squid.conf | less
+sed s/palavraOriginal/palavraParaModificar/ filename (change palavraOriginal for palavraParaModificar in the filename)
+sed s/palavraOriginal/palavraParaModificar/g filename (change palavraOriginal for palavraParaModificar in the filename in all lines)
+sed s/^/"textoAcrescentado/g filename (in the begin of the line)
+sed s/$/"textoAcrescentado/g filename (in the end of the line)
+sed s2,4s/$/"textoAcrescentado"/ filename
+sed -i s2,4s/$/"textoAcrescentado"/ filename (have been modify the filename and not the exhibition on screen)
+sed -i.original s/"palavraOriginal/palavraParaModifica/g filename
+sed 3,62s/^/#/ filename (comment at the beginning of the - on screen)
+sed -i 3,62s/^/#/ filename (comment at the beginning of the filename )
+sed -i 1,8s/^/#/ filename (comment the 8 initial lines of the filename)
+sed -i.copia 1s/^/'#!\/bin\/bash'/ filename
+sed -i.original /'#!\/bin\/bash'/d filename
+tr -s "a" < filename (show only time the letter a in the filename- "a")
+du -h /etc/ (show de size of de directory and subdirectories)
+du -h --max-depth=[0 or 1 or 2 or 3  or ...] /etc/ (how many drectories i want that the command show me)
+df -h (show me the size occupated at the disks in the computer)
+df -h -T (show above options and the typeof the directories)
+df -h -t -x tmpfs -x dev -x usr (show me the size occupated at the disks in the computer, except /tmpfs /dev /usr)
+df -h -t -x tmpfs -x dev -x usr -l (show only local storage)
+df -h -t -x tmpfs -x dev -x usr -l (show inodes available for use)
+shred filename (destroye the filename)
+shred --random-source /dev/random filename
+shred -n 25 filename (desrtroye filename 25 times)
+shred -n 25 -z filename (desrtroye filename 25 times and write zero (^@) in all filename)
+apt install manpages
+apt install manpages-pt
+cd usr/share/man (then type the ls command to see the options: man1, ma2, man3...)
+ls man1/ (look for in all options of man1's pages)
+man man
+man 5 passwd
+mandb (update and upgrade)
+whatis passwd (man -f passwd)
+whatis bash (man -f bash)
+apropos root
+apropos repair
+apropos acl (man -k acl)
+(whatis == man -f) and (apropos == man -k)
+which iptables (search environment variables and directories for the specified subject)
+IPT=$(which iptables) (1)
+echo $IPT (2)
+echo $PATH
+man shred (e.g.: man sed, man cut, man ls...)
+cd /usr/share/doc (1)
+ls (2)
+apt remove <program>
+apt install links2 (browser in mod text IMPORTANT)
+apt install info (html navigation of man pages)
+> (change the output by overwriting the content)
+>> (changes the output by adding the content)
+2> (change the error output by overwriting the contents)
+2>> (change the error output by adding the contents)
+&> (changes the standard and error output by overwriting the contents)
+&>> (changes the standard and error output by adding the contents)
+< (change the standard input)
+<< (change standard input with conditional)
+| (concatenates commands)
+ls /var/log > filename
+ls /var/log/*.gz >> filename
+echo "userhacker:senhax:1999:1999:userhacker:/home/userhacker:/bin/bash" >> /etc/passwd
+> filename (create filename empty)
+ls /var/log/teste/joao/nao/existe/este/diretorio 2> filename (directs the error message to filename)
+> filename (create a empty file)

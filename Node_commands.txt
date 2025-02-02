@@ -1,1 +1,4 @@
 npm init -y
+touch index.js
+npm install expressn
+winget install -e --id OpenJS.NodeJS
