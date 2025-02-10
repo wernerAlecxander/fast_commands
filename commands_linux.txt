@@ -195,13 +195,75 @@ updatedb (update the bank datas of the system and commands)
 grep -r update /etc/
 locate -i cron
 find /var/log/ -type f (search only type file)
-find /va/run/ -type -l (search only type simbolics links)
-find /va/run/ -type -s (search only type sockets)
-find /va/log/ -type -f -name *.gz
+find /var/run/ -type l (search only type simbolics links)
+find /var/run/ -type s (search only type sockets)
+find /var/log/ -type f -name *.gz
 find /var/log/ -type f -iname fi*.gz (search any file which name start with fi AND insensitive case)
 find /etc/ -type f -perm 755 (search file which permission is 755)
 find /etc/ -type f -perm 4755
 find / -type f -size 24k (search file whit size of the 24k)
 find / -type f -size +24k (search file with size more than 24k)
 find /etc/ -type f -amin 20 (search file with 20 min of the acess ago)
-find /etc/ -type f -amin +2 (search file with 2 days ago of the acess)
+find /etc/ -type f -atime +2 (search file with 2 days ago of the acess)
+find /etc/ -type f -ctime +2 (created more than two days ago)
+find /etc/ -type f -cmin -60 (created less than 60 minutes ago)
+find /etc/ -type f -mmin -60 (modified/modificated less than 60 minutes ago)
+find /etc/ -type f -mtime -3 -mmin +60 (modified less than 3 days ago and more than 60 minutes ago)
+find /etc/ -type f -size +600k -size -60k (files larger than 600k and files smaller than 60k)
+find /var/run/ -type f -newer filename (files newer than file filename)
+find / -type f -group shadow
+find / -type f -gid 42
+id (to know the id's number of the user current)
+find / -type f -user toor (to know the files belonging to toor)
+find /var/log -type f -name *.gz -delete
+find / -type f -name c* -print0 | xargs -0 ls (find files c* and throw for xargs, because the output of the find is very large, then xargs put fo command ls)
+find / -type f -name c* -print0 (print0 means show all files withou space between names)
+find / -type f -name *login* -exec grep -n root {} ";" (the find, work and -exec processes the comand grep with options -n root. the {} is where find will to put the results)
+find /etc/ -type f -name *login* -exec cp root {} /tmp; (processes find and throw for cp on /tmp. '{}' tells cp where to post the result)
+zip bkp.zip  filename (back up the file filename)
+zip -9 init.bkp init (backup file filename with option -9 - highest rate)
+zip -T init.bkp init (before backup the file, test integrity)
+zip -T9 init.bkp init
+zip -s 400k init.zip init (it will compress and break the file into smaller pieces. IMPORTANT: must named init.zip because this name will be sequenced - init.zip1, init.zip2...)
+zip -s- init.zip -O init2.zip (merge all files into one file)
+unzip init.bkp (uncompress/decompress the file init.bkp)
+zip -d init.bkp (uncompress/decompress the file init.bkp)
+zip -r INIT.zip backup/
+diff init.bkp init (analize diferences between files)
+zip -u -r init.zip backup/ (dont know)
+dd if=/etc/passwd conv=ucase (convert output for uppercase)
+dd if=/etc/passwd of=passwd-maiuscula conv=ucase (also creates a file called passwd-maiuscula)
+df -h (shows the size of the partitions and the space used)
+dd if=/dev/zero of=zerofile bs=1M ; rm zerofile ; sync; (write zero in hall bits of the /dev and create a file call zerofile, after remove zerofile, after make synchronism)
+cat /proc/partitions (shows the partitions of the system)
+dd if=/dev/sdc of=/tmp/sdc-mbr bs=512 count=1 conv=fsync (copy bit by bit /dev/sdc and create file /tmp/sdc-mbr the first 512 bytes, once only)
+dd if=/tmp/sdc-mbr of=/dev/sdc (restores /dev/sdc through /tmp/sdc-mbr)
+cfdisk /dev/sdc
+fsck /dev
+e2fsck -b 8192
+cat /etc/fstab (content the infiormations of the mountage based FHS)
+cat /etc/filesystems
+dmesg
+mount /dev/sda1 /mnt -r -t -vfat
+mount /dev/sdb1 /mnt
+cfdisk /dev/sdd
+partprobe
+mkfs.vfat -c /dev/mmcblock01 (mkfs.vfat [OPTIONS] TARGET [BLOCKS])
+df -T (shows all the partitions and the mount's point)
+tar -cvf bkp-etc.tar /etc (tar [OPTIONS] [FILE_CREATED] [ORIGIN])
+gzip bkp-etc.tar (compress)
+tar -tf bkp-etc.tar /etc (show content)
+tar -cvfz etc-bin.tar.gz /etc/ /usr/bin/
+tar -cvfz etc-bin.tar.gz /etc/ /usr/bin/ (tar [options] [archive-file] [file or directory to be archived])
+tar -cvfj etc-bin.tar.bz2 /etc/ /usr/bin/ (work with bzip2)
+tar -cvfJ etc-bin.tar.xz /etc/ /usr/bin/ (work with xzip)
+tar -cvfz /root/etc-bin.tar.gz /etc/ (show content)
+tar --diff -f etc.tar.bz2 -C / (to compare files)
+tar -dv -f etc.tar.bz2 -C / (to compare files)
+tar -uvf etc.tar /etc (update if the original file and the compressed file are different)
+tar -rvf etc.tar /etc (add something at the end of the compressed file)
+tar --keep-newer-files -xvf etc.tar (overwrite the original file if the original is older)
+tar --skip-old-files -xvf etc.tar (do not overwrite)
+tar --skip-old-files -xvf etc.tar -C /tmp/teste-etc/
+tar tvf etc.tar (compares the files of the directory if are older)
+tar --skip-old-files -xvf etc.tar -C TESTE/
