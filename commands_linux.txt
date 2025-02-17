@@ -267,3 +267,65 @@ tar --skip-old-files -xvf etc.tar (do not overwrite)
 tar --skip-old-files -xvf etc.tar -C /tmp/teste-etc/
 tar tvf etc.tar (compares the files of the directory if are older)
 tar --skip-old-files -xvf etc.tar -C TESTE/
+apt install rsync
+apt install rsync daemon
+mkdir BKP-RSYNC ; rsync -rpltgoD /etc/ BKP-RSYNC/
+rsync -rpltgoD /etc/ BKP-RSYNC/ (EQUAL rsync -a /etc/ BKP-RSYNC/)
+rsync -av /etc/ BKP-RSYNC/ (EQUAL above, included verbose)
+sha256sum filename1 (created a hash number - you cold to compare hash for verify)
+rsync -avz --progress /etc/ BKP-RSYNC/ (compress, transports in network and after, when arrive, descompress)
+rsync -avz --partial /etc/ BKP-RSYNC/ (It transports the file and if any problem occurs, it starts from where it left off)
+rsync -avz --progress --delete /etc/ BKP-RSYNC/
+rsync -avz --progress --delete --ignore-existing /etc/ BKP-RSYNC/
+rsync -avz --partial --progress --include=sysctl.conf --exclude=*.conf /etc/ BKP-RSYNC/
+vi /etc/default/rsync (file of the configuration - rsync)
+
+vi /etc/rsyncd.conf (configuration for rsync's daemon)
+---------configuration for rsync's daemon (in /etc/rsyncd.conf) (debianOS' linux)-------------------
+uid     = nobody
+gid     = nogroup
+use chroot = yes
+max connections = 5
+syslog facility = local5
+pid file = /var/run/rsyncd.pid
+exclude = lost+found/
+transfer logging = yestimeout = 900
+ignore nonreadable = yes
+dont compress = *.gz *+tgz *.zip *.z *.Z *.rpm *.deb *.bz2
+lock file = /var/run/rsync.lock
+log file = /var/log/rsync.log
+
+[bkp-debianSO]
+        path = /home/BKP
+        comment = backup server centos
+        read only = false
+        uid = werner
+        gid = werner
+        auth users = bkp01, suport01
+        secrets file = /etc/senhas-rsync
+
+[ftp]
+        path = home/ftpcomment = ftp export area
+-----------------------
+
+vi /etc/senhas-rsync (configuration for rsync's password) 
+-----------configuration for rsync's password (in /etc/senhas-rsync)------------
+bkp01:1a2b3c4d
+suport01:1q2r3s4t
+-----------------
+chmod 640 /etc/senhas-rsync
+tail -f /var/log/rsync.log
+vi /etc/sysconfig/rsyncd
+apt install iproute2
+ss -v
+ss -natp
+systemctl start rsync.service
+useradd werner
+passwd werner
+usermod -a -G sudo werner
+userdel werner
+hostname -I (my ip)
+ip route | grep default (route's ip)
+apt install -y netcat-openbsd (install netcat)
+apt install nmap
+nmap --version
