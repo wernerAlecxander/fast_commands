@@ -1,0 +1,27 @@
+useradd  - Criar usuário
+
+usermod - Modificar um usuário criado
+
+groupadd - Criar grupo
+
+groupmod - Modificar um grupo criado
+
+userdel - Remover um usuário
+
+groupdel - Remover um grupo
+
+adduser - Script para criação de usuário
+
+groupadd - Script para criação de grupo
+
+passwd - Cria/Altera senha de usuário e campos do /etc/shadow
+
+gpasswd - Cria/Altera senha de grupos e campos do /etc/gshadow
+
+chage - Altera campos de validade de senha no /etc/shadow
+
+chfn - Altera o campo GECOS no /etc/passwd
+
+chown - Altera Dono e Grupo de um arquivo ou diretório
+
+chgrp - Altera Grupo de um arquivo ou diretório

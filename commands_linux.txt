@@ -299,6 +299,7 @@ log file = /var/log/rsync.log
         path = /home/BKP
         comment = backup server centos
         read only = false
+        use chroot = yes
         uid = werner
         gid = werner
         auth users = bkp01, suport01
@@ -316,11 +317,41 @@ suport01:1q2r3s4t
 chmod 640 /etc/senhas-rsync
 tail -f /var/log/rsync.log
 vi /etc/sysconfig/rsyncd
+systemctl start rsync.service
+systemctl enable rsync.service
+systemctl status rsync.service
 apt install iproute2
 ss -v
 ss -natp
 systemctl start rsync.service
+rsync -avz --partial --progress /etc bkp01@172.17.0.208::bkp-debianOS (IMPORTANT)
+rsync -avz --partial --progress -e "ssh -p 22" /etc toor@172.17.0.100::bkp-debianOS (IMPORTANT)
+rsync -avzh root@192.168.0.141 :/root/rpmpkgs /tmp/myrpms (Copy a Directory from Remote to Local Server)
+rsync -avzh /root/rpmpkgs root@192.168.0.141 :/root/ (Copy a Directory from Local to Remote Server)
 useradd werner
+useradd -m werner (aloca the folder home for user)
+useradd -d /home/werner -s /bin/bash -k /etc/skel werner -g users -G audio,video
+useradd -d /dev/null -s /bin/bash/false -g users -G audio,video werner
+usermod werner (modify atributes this user)
+usermod -L werner (locked user)
+usermod -U werner (unlocked user)
+login werner (habilit the user, but, ask new password)
+usermod -a -G cdrom,floppy werner (append werner in other groups without loss olds groups)
+usermod -l teste werner (change the name/user)
+userdel werner (exclude)
+adduser werner musico (append werner in group musico)
+passwd -d werner (delete werner's passwd)
+passwd werner (change/append new passwd)
+passwd --help (IMPORTANT)
+chage werner (change parameter about date of expire and other)
+chfn (change some user parameters)
+gpasswd -A werner devops (werner is administrator of the group DEVOPS)
+chown user1 BKP (the fold BKP will be of the user1)
+chown -R user1 BKP (the fold BKP and subfold will be of the user1)
+chgrp ldap BKP (search)
+chown werner:user -R BKP/ (search)
+gpasswd --help (search after)
+groupadd 
 passwd werner
 usermod -a -G sudo werner
 userdel werner
@@ -329,3 +360,29 @@ ip route | grep default (route's ip)
 apt install -y netcat-openbsd (install netcat)
 apt install nmap
 nmap --version
+firewall-cmd --permanent --add-service=rsyncd
+firewall-cmd --reload
+
+------------------------
+for ((A=1; A<=255;A++))
+do 
+        echo 192.168.1.$A
+        ping -c 1 192.168.1.$A
+        if ["$?" -eq "0"]
+        then
+                echo 192.168.1.$A >> lista-ipok 
+        else 
+                echo 192.168.1.$A >> lista-ipfail
+        fi
+done
+--------------------------------
+apt search vim
+dpkg --get-selections
+dpkg --get-selections | grep -v deinstall
+/etc/passwd => NOME-DO-USUARIO:SENHA:UID:GID-GRUPO-PRIMARIO:GECOS:HOME:SHELL(/usr/local/bin/script-analise.sh)
+/etc/shadow => NOME:SENHA(CIFRA):DATA-CRIACAO-CONTA:IDADE-MINIMA:IDADE-MAXIMA:AVISO-ANTES-VENCER:DIAS-INATIVIDADE:DATA-EXPIRACAO:
+/etc/gshadow => NOME-GRUPO:SENHA(CIFRA):ADMINISTRADOR-GRUPO:MEMBRO,MEMBRO...
+cd /etc/skel
+vi /etc/default/useradd (storage informations about default's user)
+vi /etc/adduser.conf (configuration's file to users)
+vi /etc/pam.d/su => (configuration's file of command SU)
