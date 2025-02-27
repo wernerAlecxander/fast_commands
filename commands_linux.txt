@@ -212,7 +212,11 @@ find /etc/ -type f -mtime -3 -mmin +60 (modified less than 3 days ago and more t
 find /etc/ -type f -size +600k -size -60k (files larger than 600k and files smaller than 60k)
 find /var/run/ -type f -newer filename (files newer than file filename)
 find / -type f -group shadow
-find / -type f -gid 42
+find /etc -type f -gid 42
+find /etc -perm -400
+find /etc -type f -perm 764
+find /etc -type f -perm /764 (file with permission more than 764)
+find /etc -type f -perm -764 & /400
 id (to know the id's number of the user current)
 find / -type f -user toor (to know the files belonging to toor)
 find /var/log -type f -name *.gz -delete
@@ -382,7 +386,38 @@ dpkg --get-selections | grep -v deinstall
 /etc/passwd => NOME-DO-USUARIO:SENHA:UID:GID-GRUPO-PRIMARIO:GECOS:HOME:SHELL(/usr/local/bin/script-analise.sh)
 /etc/shadow => NOME:SENHA(CIFRA):DATA-CRIACAO-CONTA:IDADE-MINIMA:IDADE-MAXIMA:AVISO-ANTES-VENCER:DIAS-INATIVIDADE:DATA-EXPIRACAO:
 /etc/gshadow => NOME-GRUPO:SENHA(CIFRA):ADMINISTRADOR-GRUPO:MEMBRO,MEMBRO...
+vi /etc/group =>  
 cd /etc/skel
 vi /etc/default/useradd (storage informations about default's user)
 vi /etc/adduser.conf (configuration's file to users)
 vi /etc/pam.d/su => (configuration's file of command SU)
+vi /etc/pam.d
+update-alternatives --config editor
+update-alternatives --list editor
+update-alternatives --set editor /usr/bin/vim.tiny
+whois sefaz.rr.gov.br (apt install whois)
+dig -t all sefaz.rr.gov.br (apt install dnsutils)
+sudo -V (all informations about file config sudoer)
+chmod o-r /etc/filename
+chmod u-w,g-r,o+wx filename (user loss write, group loss read and other gain write e execution)
+chmos u+rwx,o-rwx filename (user gain write, read e exec, other loss read, write e execution)
+cp /etc/login.defs . (copy /etc/login.defs in the current PATH)
+ls -CF
+chmod uog=rwx filename (chmod a=rwx filename)
+chmod -R go-rwx filename (other and group loss read, write and exec)
+watch -n1 ‘free -h'
+exiftool filename (apt install exiftool)
+cat /etc/shells
+echo $SHELL
+chsh (change shell terminal)
+finger root (apt install finger)
+xrandr (apt install x11-xserver-utils -y)
+umask 0022
+grep -r umask /etc/
+vi /etc/fstab (partitions UUID's numbers)
+ls -l /dev/disk/by-uuid/ (UUID of the partitions)
+uuid=$(cat /proc/sys/kernel/random/uuid)
+echo $uuid
+uuid=$(openssl rand -hex 16)
+echo ${uuid:0:8}-${uuid:8:4}-${uuid:12:4}-${uuid:16:4}-${uuid:20:12}
+blkid (show UUID's numbers)

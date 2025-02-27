@@ -1,3 +1,4 @@
+-------4.2--------------
 useradd  - Criar usuário
 
 usermod - Modificar um usuário criado
@@ -25,3 +26,67 @@ chfn - Altera o campo GECOS no /etc/passwd
 chown - Altera Dono e Grupo de um arquivo ou diretório
 
 chgrp - Altera Grupo de um arquivo ou diretório
+---------------4.3-------------------
+/etc/motd - Message Of The Day 
+
+Arquivo que exibe um texto logo após o usuário logar na máquina
+
+
+/etc/issue
+
+Arquivo que exibe mensagens que ficam em cima do prompt de login em qualquer um dos terminais de texto (tty)
+
+Aceita os seguintes parâmetros de substituição:
+
+\s  - nome do sistema
+
+\n - nome da máquina
+
+\o - nome do domínio
+
+\m - arquitetura da máquina
+
+\r - versão do kernel
+
+\d - data
+
+\t - hora
+
+\l - nome do terminal (tty)
+
+\u - usuário​ que estava logado
+------------5.1------------
+Comando de manipulação de Permissões:
+
+chmod <opções> <arquivo/diretorio>
+
+Permissões literais:
+
+rwx
+
+r - leitura
+
+w - escrita
+
+x - execução
+
+Conjuntos (usuário, grupo , outros):
+
+
+u - usuário
+
+g - grupo
+
+o - outros
+
+a - todos
+
++ atribui uma ou mais permissões
+
+-   remove ou mais permissões
+
+= mantém apenas as permissões especificadas (remove ou atribui se necessário)
+
+
+-R  - opção para aplicar permissões de forma recursiva
+

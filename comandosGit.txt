@@ -11,6 +11,7 @@ git add -A (2)
 git commit -m "first commit this projetc" (3)
 git branch
 git commit -am "mensage" (3)
+git commit ./.gitignore -m '2025-02-27'
 git reset --soft bd3b408cb6bc0d65d8eae8b7d3a654ac4bdc257b (volta comit anterior e deixa as opçoes mudanças visíveis)
 git reset --mixed bd3b408cb6bc0d65d8eae8b7d3a654ac4bdc257b (volta alteração al=nterior do arquivo. Precisa comando add para depois comitar)
 git reset --hard bd3b408cb6bc0d65d8eae8b7d3a654ac4bdc257b (volta e apaga as mudanças anteriores)
@@ -40,7 +41,7 @@ git branch -D teste (deleta o branch teste do repositório local)
 git pull origin master (puxa do repositorio remoto para o local no branch master)
 git clone https://github.com/wernerAlecxander/modulogit (clona do remoto para o local. Vale para qualquer repositorio)
 git clone --progress https://github.com/werneralecxander/jscript c:/projetojs (clona do remoto para o local na pasta c:/projetojs)
-git push origin --delete nomeDoBranchRemoto 
+git push origin --delete nomeDoBranchRemoto
 --------------------------------
 git branch -m master main (muda o nome do branch)
 git fetch origin 
