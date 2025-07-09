@@ -14,3 +14,5 @@ Get-ChildItem -Directory -Recurse | Where-Object { $_.Name -match 'python' } | m
 Get-ChildItem -Directory -Recurse | Where-Object { $_.Name -match 'python', 'myproject' } | more
 Get-ChildItem -Directory -Recurse | Where-Object { $_.FullName -match '^python$' }
 Clear-History
+Get-History | Where-Object { $_.CommandLine -match "python" }
+Get-Process | Where-Object { -not $_.MainWindowTitle }
