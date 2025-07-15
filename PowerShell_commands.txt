@@ -16,3 +16,7 @@ Get-ChildItem -Directory -Recurse | Where-Object { $_.FullName -match '^python$'
 Clear-History
 Get-History | Where-Object { $_.CommandLine -match "python" }
 Get-Process | Where-Object { -not $_.MainWindowTitle }
+Get-Process | Where-Object { $_.ProcessName -like "steam*" } # Para visualizar no PowerShell todos os aplicativos da Steam ativos e em segundo plano, você pode filtrar os processos relacionados à Steam. Use o comando abaixo:
+Get-Process | Where-Object { $_.ProcessName -like "steam*" -and -not $_.MainWindowTitle } # Esse comando lista todos os processos cujo nome começa com "steam", incluindo o cliente Steam e jogos abertos. Para mostrar apenas os que não têm janela principal (normalmente em segundo plano):
+Start-Process powershell -Verb runAs # rodar como administrador
+Start-Process powershell -Verb runAs -WindowStyle Hidden
