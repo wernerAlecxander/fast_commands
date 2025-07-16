@@ -24,3 +24,4 @@ Move-Item -Path $env:USERPROFILE\Downloads\PIBePIBPerCapita.csv","$env:USERPROFI
 Move-Item -Path "$env:USERPROFILE\Downloads\*" -Destination "C:\UFRR\metodosComputacionais"
 New-Item -Path "c:\ufrr\metodoscomputacionais\1-DadosCSV", "c:\ufrr\metodoscomputacionais\2-DadosImportacao", "c:\ufrr\metodoscomputacionais\3-DadosTratados" -ItemType Directory
 Remove-Item -Path "c:\ufrr\metodoscomputacionais\pasta1","c:\ufrr\metodoscomputacionais\pasta2","c:\ufrr\metodoscomputacionais\pasta3" -Recurse -Force
+"pastaA","pastaB","pastaC" | ForEach-Object { New-Item -Path "c:\ufrr" -Name $_ -ItemType Directory }
