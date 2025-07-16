@@ -20,3 +20,7 @@ Get-Process | Where-Object { $_.ProcessName -like "steam*" } # Para visualizar n
 Get-Process | Where-Object { $_.ProcessName -like "steam*" -and -not $_.MainWindowTitle } # Esse comando lista todos os processos cujo nome começa com "steam", incluindo o cliente Steam e jogos abertos. Para mostrar apenas os que não têm janela principal (normalmente em segundo plano):
 Start-Process powershell -Verb runAs # rodar como administrador
 Start-Process powershell -Verb runAs -WindowStyle Hidden
+Move-Item -Path $env:USERPROFILE\Downloads\PIBePIBPerCapita.csv","$env:USERPROFILE\Downloads\PIB_Variacao.csv" -Destination "C:\UFRR\metodosComputacionais"
+Move-Item -Path "$env:USERPROFILE\Downloads\*" -Destination "C:\UFRR\metodosComputacionais"
+New-Item -Path "c:\ufrr\metodoscomputacionais\1-DadosCSV", "c:\ufrr\metodoscomputacionais\2-DadosImportacao", "c:\ufrr\metodoscomputacionais\3-DadosTratados" -ItemType Directory
+Remove-Item -Path "c:\ufrr\metodoscomputacionais\pasta1","c:\ufrr\metodoscomputacionais\pasta2","c:\ufrr\metodoscomputacionais\pasta3" -Recurse -Force
