@@ -28,3 +28,5 @@ Remove-Item -Path "c:\ufrr\metodoscomputacionais\pasta1","c:\ufrr\metodoscomputa
 "pastaA","pastaB","pastaC" | ForEach-Object { New-Item -Path "c:\ufrr" -Name $_ -ItemType Directory }
 Start-Process powershell -Verb runAs -ArgumentList "Get-Process | Where-Object '{$_.ProcessName -like ""*team*"" -and -not $_.MainWindowTitle}' | Stop-Process"
 Get-Process | Where-Object {$_.ProcessName -like "*team*" -and -not $_.MainWindowTitle} | Stop-Process -Force
+Get-ChildItem -Path C:\ufrr\metodosComputacionais\ -Directory -Filter "pasta*"
+Get-ChildItem -Path C:\ufrr\metodosComputacionais\ -Directory -Filter "pasta*" | Remove-Item
