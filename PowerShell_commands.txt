@@ -30,3 +30,7 @@ Start-Process powershell -Verb runAs -ArgumentList "Get-Process | Where-Object '
 Get-Process | Where-Object {$_.ProcessName -like "*team*" -and -not $_.MainWindowTitle} | Stop-Process -Force
 Get-ChildItem -Path C:\ufrr\metodosComputacionais\ -Directory -Filter "pasta*"
 Get-ChildItem -Path C:\ufrr\metodosComputacionais\ -Directory -Filter "pasta*" | Remove-Item
+----------------------------------------------------------------------
+Test-Connection -ComputerName (1..254 | ForEach-Object { "192.168.1.$_" }) -Count 1
+Get-NetConnectionProfile (cath the list's perfil of LAN, write donwn (anotate) the number of the InterfaceIndex, and use in the next conmmand bellow. In this case is 16)
+Set-NetConnectionProfile -InterfaceIndex 16 -NetworkCategory Private (change domain for private)
