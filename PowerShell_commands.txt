@@ -34,3 +34,4 @@ Get-ChildItem -Path C:\ufrr\metodosComputacionais\ -Directory -Filter "pasta*" |
 Test-Connection -ComputerName (1..254 | ForEach-Object { "192.168.1.$_" }) -Count 1
 Get-NetConnectionProfile (cath the list's perfil of LAN, write donwn (anotate) the number of the InterfaceIndex, and use in the next conmmand bellow. In this case is 16)
 Set-NetConnectionProfile -InterfaceIndex 16 -NetworkCategory Private (change domain for private)
+
