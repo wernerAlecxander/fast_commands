@@ -2,3 +2,24 @@ npm init -y
 touch index.js
 npm install expressn
 winget install -e --id OpenJS.NodeJS
+npm install express --no-save
+npm install -g nodemon
+npm install jest --save-dev # or npm install jest -D
+npm install fancy-feature --save-optional (important)
+npm outdated
+npm update express
+npm install -g npm@latest
+npm install -g npm-check-updates
+ncu
+ncu -u
+npm audit
+# Or using npx with the 'audit' package
+npx audit
+npm audit fix
+npm audit fix --force
+npm cache clean --force
+rm -rf node_modules
+rm package-lock.json
+npm install
+npm ls
+npm rebuild
