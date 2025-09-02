@@ -23,3 +23,16 @@ rm package-lock.json
 npm install
 npm ls
 npm rebuild
+npm install -D typescript
+npm install -g typescript
+npx tsc fileName.ts
+npx tsc --init
+npx tsc (after discomment outDir in tsconfig.json)
+npm run build
+npm run start
+npm install -D ts-node
+npx ts-node fileName.ts
+node --watch folder/fileName
+npm i -D tsx
+node --import=tsx --watch src/fileName
+node --import=tsx --watch .\src\hello.ts

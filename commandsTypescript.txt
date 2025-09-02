@@ -1,5 +1,14 @@
 npm install -D typescript
 npm install -g typescript
-npx tsc file.ts
+npx tsc fileName.ts
 npx tsc --init
-npx tsc (after discomment outDir in tsconfig.json)
+npx tsc (Before discomment outDir and rootDir in tsconfig.json and create src in root paste. After execute command)
+npm run build
+npm run start
+npm install -D ts-node
+npx ts-node fileName.ts
+npm i -D tsx
+node --import=tsx --watch src/fileName
+node --import=tsx --watch .\src\hello.ts
+npm uninstall ts-node
+npm i -D @types/node
