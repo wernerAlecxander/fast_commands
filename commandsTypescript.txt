@@ -1,0 +1,5 @@
+npm install -D typescript
+npm install -g typescript
+npx tsc file.ts
+npx tsc --init
+npx tsc (after discomment outDir in tsconfig.json)
