@@ -9,4 +9,29 @@ Set-ExecutionPolicy -ExecuionPolicy RemoteSigned -Scope CurrentUser
 Get-ExecutionPolicy
 Get-ExecutionPolicy -List
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
-cd $Env:USERPROFILE
+ Get-ChildItem -Directory -Recurse | more
+Get-ChildItem -Directory -Recurse | Where-Object { $_.Name -match 'python' } | more
+Get-ChildItem -Directory -Recurse | Where-Object { $_.Name -match 'python', 'myproject' } | more
+Get-ChildItem -Directory -Recurse | Where-Object { $_.FullName -match '^python$' }
+Clear-History
+Get-History | Where-Object { $_.CommandLine -match "python" }
+Get-Process | Where-Object { -not $_.MainWindowTitle }
+Get-Process | Where-Object { $_.ProcessName -like "steam*" } # Para visualizar no PowerShell todos os aplicativos da Steam ativos e em segundo plano, você pode filtrar os processos relacionados à Steam. Use o comando abaixo:
+Get-Process | Where-Object { $_.ProcessName -like "steam*" -and -not $_.MainWindowTitle } # Esse comando lista todos os processos cujo nome começa com "steam", incluindo o cliente Steam e jogos abertos. Para mostrar apenas os que não têm janela principal (normalmente em segundo plano):
+Stop-Process -Name steam* -Force
+Start-Process powershell -Verb runAs # rodar como administrador
+Start-Process powershell -Verb runAs -WindowStyle Hidden
+Move-Item -Path $env:USERPROFILE\Downloads\PIBePIBPerCapita.csv","$env:USERPROFILE\Downloads\PIB_Variacao.csv" -Destination "C:\UFRR\metodosComputacionais"
+Move-Item -Path "$env:USERPROFILE\Downloads\*" -Destination "C:\UFRR\metodosComputacionais"
+New-Item -Path "c:\ufrr\metodoscomputacionais\1-DadosCSV", "c:\ufrr\metodoscomputacionais\2-DadosImportacao", "c:\ufrr\metodoscomputacionais\3-DadosTratados" -ItemType Directory
+Remove-Item -Path "c:\ufrr\metodoscomputacionais\pasta1","c:\ufrr\metodoscomputacionais\pasta2","c:\ufrr\metodoscomputacionais\pasta3" -Recurse -Force
+"pastaA","pastaB","pastaC" | ForEach-Object { New-Item -Path "c:\ufrr" -Name $_ -ItemType Directory }
+Start-Process powershell -Verb runAs -ArgumentList "Get-Process | Where-Object '{$_.ProcessName -like ""*team*"" -and -not $_.MainWindowTitle}' | Stop-Process"
+Get-Process | Where-Object {$_.ProcessName -like "*team*" -and -not $_.MainWindowTitle} | Stop-Process -Force
+Get-ChildItem -Path C:\ufrr\metodosComputacionais\ -Directory -Filter "pasta*"
+Get-ChildItem -Path C:\ufrr\metodosComputacionais\ -Directory -Filter "pasta*" | Remove-Item
+----------------------------------------------------------------------
+Test-Connection -ComputerName (1..254 | ForEach-Object { "192.168.1.$_" }) -Count 1
+Get-NetConnectionProfile (cath the list's perfil of LAN, write donwn (anotate) the number of the InterfaceIndex, and use in the next conmmand bellow. In this case is 16)
+Set-NetConnectionProfile -InterfaceIndex 16 -NetworkCategory Private (change domain for private)
+Get-ChildItem -File | Where-Object { $_.Name -ne 'App.js' } | Remove-Item
