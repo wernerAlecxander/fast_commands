@@ -90,3 +90,4 @@ a - todos
 
 -R  - opção para aplicar permissões de forma recursiva
 
+-----------------

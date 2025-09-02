@@ -5,7 +5,8 @@ netplwix (abre caixa dialogo de conta de usuarios)
 rundll32.exe PowrProf,SetSuspendState
 New-Item -Path .\node -ItemType directory
 New-Item -Path .\node\index.js -ItemType file
-Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
+Set-ExecutionPolicy -ExecuionPolicy RemoteSigned -Scope CurrentUser
 Get-ExecutionPolicy
 Get-ExecutionPolicy -List
 Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope LocalMachine
+cd $Env:USERPROFILE

