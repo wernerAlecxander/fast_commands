@@ -1,13 +1,11 @@
 npm init -y
 touch index.js
-npm install expressn
 winget install -e --id OpenJS.NodeJS
 npm install express --no-save
 npm install -g nodemon
 npm install jest --save-dev # or npm install jest -D
 npm install fancy-feature --save-optional (important)
 npm outdated
-npm update express
 npm install -g npm@latest
 npm install -g npm-check-updates
 ncu
@@ -36,3 +34,14 @@ node --watch folder/fileName
 npm i -D tsx
 node --import=tsx --watch src/fileName
 node --import=tsx --watch .\src\hello.ts
+npm uninstall ts-node
+npm i -D @types/node
+npm install express
+npm i -D @types/express
+npm update express
+npm i helmet (IMPORTANT)
+npm install -g eslint
+npx eslint --init
+npm install -g prettier
+npm install prettier -D --save-exact
+npm run format (npx prettier --write .)

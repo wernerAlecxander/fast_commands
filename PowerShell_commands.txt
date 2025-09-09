@@ -24,6 +24,7 @@ Start-Process powershell -Verb runAs -WindowStyle Hidden
 Move-Item -Path $env:USERPROFILE\Downloads\PIBePIBPerCapita.csv","$env:USERPROFILE\Downloads\PIB_Variacao.csv" -Destination "C:\UFRR\metodosComputacionais"
 Move-Item -Path "$env:USERPROFILE\Downloads\*" -Destination "C:\UFRR\metodosComputacionais"
 New-Item -Path "c:\ufrr\metodoscomputacionais\1-DadosCSV", "c:\ufrr\metodoscomputacionais\2-DadosImportacao", "c:\ufrr\metodoscomputacionais\3-DadosTratados" -ItemType Directory
+Copy-Item -Path "C:\engineer\projects\reiDoFerroVelho/.gitignore" -Destination "..\..\node\projects\zod\"
 Remove-Item -Path "c:\ufrr\metodoscomputacionais\pasta1","c:\ufrr\metodoscomputacionais\pasta2","c:\ufrr\metodoscomputacionais\pasta3" -Recurse -Force
 "pastaA","pastaB","pastaC" | ForEach-Object { New-Item -Path "c:\ufrr" -Name $_ -ItemType Directory }
 Start-Process powershell -Verb runAs -ArgumentList "Get-Process | Where-Object '{$_.ProcessName -like ""*team*"" -and -not $_.MainWindowTitle}' | Stop-Process"
