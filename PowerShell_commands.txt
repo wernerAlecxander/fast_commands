@@ -61,3 +61,7 @@ Get-LocalUser | Select-Object Name, Enabled | Format-Table -AutoSize
 Get-LocalGroupMember -Group "Users" | Select-Object Name, ObjectClass | Format-Table -AutoSize
 #visualizar dados de um usuário específico
 Get-LocalUser "administrador" | Select-Object Name, ObjectClass, enabled | Format-Table -AutoSize
+#Listar todas as funções:
+Get-Command -CommandType Function | Select-Object Name, Definition | Format-Table -AutoSize
+#Listar todas as variáveis:
+Get-Variable | Select-Object Name, Value | Format-Table -AutoSize
