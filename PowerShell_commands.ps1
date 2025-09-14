@@ -1,6 +1,6 @@
-net localgroup
-net user
-net localgroup administradores werner /add (adiciona werner ao grupo de administradores)
+net localgroup;
+net user;
+net localgroup administradores werner /add #(adiciona werner ao grupo de administradores)
 netplwix (abre caixa dialogo de conta de usuarios)
 rundll32.exe PowrProf,SetSuspendState
 New-Item -Path .\node -ItemType directory
@@ -60,8 +60,11 @@ Get-LocalUser | Select-Object Name, Enabled | Format-Table -AutoSize
 #visualizar os grupos de usuários do Windows
 Get-LocalGroupMember -Group "Users" | Select-Object Name, ObjectClass | Format-Table -AutoSize
 #visualizar dados de um usuário específico
-Get-LocalUser "administrador" | Select-Object Name, ObjectClass, enabled | Format-Table -AutoSize
+Get-LocalUser "administrador" | Select-Object Name, ObjectClass, enabled | Format-Table -AutoSize;
 #Listar todas as funções:
 Get-Command -CommandType Function | Select-Object Name, Definition | Format-Table -AutoSize
 #Listar todas as variáveis:
 Get-Variable | Select-Object Name, Value | Format-Table -AutoSize
+get-cimInstance -ClassName Win32_StartupCommand
+# para visualizar os processos ativos no Visual Studio Code.
+> Developer: Open Process Explorer
