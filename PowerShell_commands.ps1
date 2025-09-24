@@ -1,5 +1,8 @@
 net localgroup;
 net user;
+(Get-LocalUser -Name $env:USERNAME).LocalGroup | Select-Object Name
+Get-LocalGroupMember -Group "Administrators" #para administradores locais
+Get-ADGroupMember -Identity "Domain Admins" #(ou outro nome de grupo) para administradores de domínio
 net localgroup administradores werner /add #(adiciona werner ao grupo de administradores)
 netplwix (abre caixa dialogo de conta de usuarios)
 rundll32.exe PowrProf,SetSuspendState
