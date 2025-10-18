@@ -1,0 +1,10 @@
+ Fast commands folder
+fast_commands/
+
+# Other common ignores
+node_modules/
+.env
+.env.local
+*.log
+dist/
+build/
