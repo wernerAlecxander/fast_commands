@@ -51,3 +51,33 @@ git remote set-head origin -a
 git pull (atualiza o local de acordo com o branch remoto) = git fetch + git merge( OR git rebase)
 git update-index --assume-unchanged package-lock.json
 git update-index --no-assume-unchanged package-lock.json
+#---------------------------------------------------------------------
+# Baixar as mudanças do repositório remoto
+git pull origin master
+
+# Depois fazer o push
+git push origin master
+# Verificar o status
+git status
+
+# Fazer pull com rebase para manter histórico linear
+git pull --rebase origin master
+
+# Se houver conflitos, resolver e continuar
+git add .
+git rebase --continue
+
+# Depois fazer push
+git push origin master
+# Verificar o status
+git status
+
+# Fazer pull com rebase para manter histórico linear
+git pull --rebase origin master
+
+# Se houver conflitos, resolver e continuar
+git add .
+git rebase --continue
+
+# Depois fazer push
+git push origin master
