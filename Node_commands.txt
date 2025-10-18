@@ -1,3 +1,81 @@
+(OPCIONAL) new-item -path $profile -type file –force (created script microsoft.powershell_profile.ps1 for configure enviroment local)
+ise $PROFILE
+npm init -y
+touch index.js
+winget install -e --id OpenJS.NodeJS
+npm install express --no-save
+npm install -g nodemon
+npm install jest --save-dev # or npm install jest -D
+npm install fancy-feature --save-optional (important)
+npm outdated
+npm install -g npm@latest
+npm install -g npm-check-updates
+ncu
+ncu -u
+npm audit
+# Or using npx with the 'audit' package
+npx audit
+npm audit fix
+npm audit fix --force
+npm cache clean --force
+rm -rf node_modules
+rm package-lock.json
+npm install
+npm ls
+npm rebuild
+npm install -D typescript
+npm install -g typescript
+npx tsc fileName.ts
+npx tsc --init
+npx tsc (after discomment outDir in tsconfig.json)
+npm run build
+npm run start
+npm install -D ts-node
+npx ts-node fileName.ts
+node --watch folder/fileName
+npm i -D tsx
+node --import=tsx --watch src/fileName
+node --import=tsx --watch .\src\hello.ts
+npm uninstall ts-node
+npm i -D @types/node (npm i -D @types/node tsx typescript)
+npm install express
+npm i -D @types/express
+npm update express
+npm i helmet (IMPORTANT)
+npm install --save-dev @types/helmet (IMPORTANT)
+npm install -g eslint
+npx eslint --init
+npm install -g prettier
+npm install prettier -D --save-exact
+npm run format (npx prettier --write .)
+npm install zod
+---------------------------------
+npm install --save-dev --save-exact @biomejs/biome
+npx @biomejs/biome init
+npx @biomejs/biome format --write <files>
+biome format file1.js src/
+npm i -D prisma
+npx prisma init
+---------------------------------------------
+Remove-Item -Recurse -Force node_modules; Remove-Item -Force package-lock.json; npm install
+npm cache clean --force; npm install -D tailwindcss@latest postcss@latest autoprefixer@latest
+---------------------------------
+cd ..; Remove-Item -Recurse -Force my-project2
+-------------------------------------------
+npm install -D tailwindcss postcss autoprefixer
+npx tailwindcss init -p
+--------------------
+typescript
+@types/node
+@types/react
+@types/react-dom
+@tailwindcss/postcss
+tailwindcss
+eslint
+eslint-config-next
+@eslint/eslintrc
+--------------------------------
+
 npm init -y
 touch index.js
 winget install -e --id OpenJS.NodeJS

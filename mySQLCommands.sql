@@ -83,6 +83,16 @@ SELECT *, (SELECT fornecedores.Nome FROM fornecedores WHERE fornecedores.ID = pr
 SELECT * FROM produtos WHERE (SELECT fornecedores.Nome FROM fornecedores WHERE fornecedores.ID = produtos.fornecedores_ID LIMIT 1) = 'Generico';
 SELECT Produtos.*, Fornecedores.nomeFornecedor AS FornecedorRelacao FROM Produtos INNER JOIN Fornecedores ON Produtos.FornecedorID = Fornecedores.ID;
 
+CREATE TABLE teste.Users (
+	ID INT auto_increment NOT NULL,
+	Name varchar(100) NOT NULL,
+	Column1 INT DEFAULT 18 NOT NULL,
+	CONSTRAINT Users_pk PRIMARY KEY (ID)
+)
+ENGINE=InnoDB
+DEFAULT CHARSET=utf8mb4
+COLLATE=utf8mb4_0900_ai_ci;
+
 #------------------------- PHP -------------------------;
 <?php
 
