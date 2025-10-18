@@ -1,0 +1,470 @@
+ip a
+ip r
+ip -4 a
+ip -6 a
+ip show enp0s3
+ip link ls up
+ip a add 192.168.1.150/255.255.255.0 dev enp0s3
+ip a del 192.168.1.150/24 dev enp0s3
+ip link set enp0s3 up
+ip link set enp0s3 down
+apt install rsyslog
+systemctl disable apparmor.service
+apt install net-tools
+shutdown -h now
+reboot
+apt install ssh
+sudo apt-get install --fix-missing  
+sudo apt-get update && apt-get install traceroute
+ls -lha --format=[commas, semicolon, horizontal, vertical, across, single-column] 
+ls --inode
+ls -m
+ls /var/log -1
+ls -c /var/log (shows the last date of acess)
+ls -l -s /var/log (show the real file size)
+ls -ln /dev/ (show the user's uid)
+id -u (capture the user's uid)
+ls -c /var/log (shows the date of creation)
+ls -lAR (show recursively files and directories)
+ls- lAR | tail
+ls- lhS /var/log (S- size of the files first)
+ls -lhSr /sbin/ (l=long,h=human-redeable,S=size,r=recursive)
+ls -i (show the past's inodes)
+cd - (back to the initial position)
+cd ../../../../ (back to the four position)
+mkdir -p /lesson/class/teacher (create de directory fhather and childs)
+mkdir -p relatories/mounth{01..12}/weeek{01..07}/
+mkdir -m 4775 datas
+touch file1 (create a file named file1 = OB: the command modify the time-stamp of the file, but, the people used for create file)
+touch -t 202509291945.33 arq1
+touch -at 202501281200.33 test
+touch -mt 202501281200.33 test (modify the time acess)
+alias cp='cp -i'
+unlias cp
+cp -r-v tes* /var/log
+cp -rfp /var/log/ /tmp/log (copy mantend the own original)
+alias mv='mv -i' (ask before to do it)
+rm -rf (rm for stand dont erase directories, but, com option -r, he make it)
+ln login.defs login.copia3 (hard link)
+ln -s login.defs login.copia3 (soft link)
+file (type of the files and more informations = IMPORTANT: deserves to be studied)
+date MMDDhhmmCCYY.ss
+date %A (SUNDAY (example))
+date %a (saturday)
+locale
+export LC_TIME=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+locale
+export LC_ALL=pt_BR.UTF-8
+vi /etc/locale.gen
+locale-gen
+date +%d-%m-%Y-%H-%M
+hwclock (show the time of the hardware)
+hwclock (become equal the system time and hardware time)
+tzselect (time zone)
+vi /etc/localtime (in binary. show the local time of de time zone)
+tail -n 27 login.copia
+echo 'hello world' | xxd -b
+echo 'hello world' | xxd -b > binary.txt
+tail -c 200 login.bkp
+tail -f /var/log/syslog (keeps the session open with the latest logs being loaded on screen)
+cat -A login.copia (characters dont printer will show on the screen)
+cat -n login.copia (show the line number)
+cat -b login.copia (show the line number that have content usefull)
+cat -s login.copia
+nl -ba filename
+nl -bt filename
+wc filename (show the statistic of the file)
+wc -w filename
+wc -c filename
+sort filename (show orderely output on the screen)
+sort -n list.bkp
+sort -nrh list.bkp
+cut -c 1,3,7,11 filename (cut content of the columns 1,3,5,7 e 11)
+cut -d ":" -f 1,3,7 filename
+uniq filename (dont show lines repeated)
+uniq -c filename (how many times each line appeared)
+cut -d " " -f ,6 /var/log/auth.log | sort |uniq -capture
+uniq -d filename (line duplicate)
+uniq -u filename (line uniq)
+dd if=/dev/random of=/root/filename bs=1M count=300 (file with size 300 megabytes with content no-sense)
+split -b 10M filename filename.
+cat filename.* > filename.copy
+split -l 50 filename filename.
+diff filename filename.copy
+grep --ignore-case JOÃO filename
+grep -in http /etc/squid/squid.conf
+vi /etc/squid/squid.conf +7330
+grep -c USER filename (counts how many times the searched word appeared)
+egrep -c '(root|toor)' /var/log/auth.log (counts how many times the two searched words appeared)
+egrep -c -f filename /var/log/auth.log (counts how many times the words in the 'filename' appeared in the auth.log file)
+egrep ^$ /etc/login.defs (how many empty lines are there in the file)
+egrep -v ^$ /etc/login.defs (dont empty lines)
+egrep ^# /etc/login.defs (commented lines)
+egrep -v ^# /etc/login.defs (uncommented lines)
+egrep -v '(^#|^$)' /etc/login.defs (uncommented lines and non-empty lines)
+grep -r toor /etc/ (search for the file in the directory and all subdirectories)
+grep -rl toor /etc/ (show only the file and directory, dont the word 'toor')
+grep -rL toor /etc/ (show only the file and directory, where the word 'toor' not be)
+grep -m 25 http /etc/squid/squid.conf (the first 25 lines)
+grep http /etc/squid/squid.conf | less
+sed s/palavraOriginal/palavraParaModificar/ filename (change palavraOriginal for palavraParaModificar in the filename)
+sed s/palavraOriginal/palavraParaModificar/g filename (change palavraOriginal for palavraParaModificar in the filename in all lines)
+sed s/^/"textoAcrescentado/g filename (in the begin of the line)
+sed s/$/"textoAcrescentado/g filename (in the end of the line)
+sed s2,4s/$/"textoAcrescentado"/ filename
+sed -i s2,4s/$/"textoAcrescentado"/ filename (have been modify the filename and not the exhibition on screen)
+sed -i.original s/"palavraOriginal/palavraParaModifica/g filename
+sed 3,62s/^/#/ filename (comment at the beginning of the - on screen)
+sed -i 3,62s/^/#/ filename (comment at the beginning of the filename )
+sed -i 1,8s/^/#/ filename (comment the 8 initial lines of the filename)
+sed -i.copia 1s/^/'#!\/bin\/bash'/ filename
+sed -i.original /'#!\/bin\/bash'/d filename
+tr -s "a" < filename (show only time the letter a in the filename- "a")
+du -h /etc/ (show de size of de directory and subdirectories)
+du -h --max-depth=[0 or 1 or 2 or 3  or ...] /etc/ (how many drectories I want that the command show me)
+df -h (show me the size occupated at the disks in the computer)
+df -h -T (show above options and the typeof the directories)
+df -h -t -x tmpfs -x dev -x usr (show me the size occupated at the disks in the computer, except /tmpfs /dev /usr)
+df -h -t -x tmpfs -x dev -x usr -l (show only local storage)
+df -h -t -x tmpfs -x dev -x usr -l (show inodes available for use)
+shred filename (destroye the filename)
+shred --random-source /dev/random filename
+shred -n 25 filename (desrtroye filename 25 times)
+shred -n 25 -z filename (desrtroye filename 25 times and write zero (^@) in all filename)
+apt install manpages
+apt install manpages-pt
+cd usr/share/man (then type the ls command to see the options: man1, ma2, man3...)
+ls man1/ (look for in all options of man1's pages)
+man man
+man 5 passwd
+mandb (update and upgrade)
+whatis passwd (man -f passwd)
+whatis bash (man -f bash)
+apropos root
+apropos repair
+apropos acl (man -k acl)
+(whatis == man -f) and (apropos == man -k)
+which iptables (search environment variables and directories for the specified subject)
+IPT=$(which iptables) (1)
+echo $IPT (2)
+echo $PATH
+man shred (e.g.: man sed, man cut, man ls...)
+cd /usr/share/doc (1)
+ls (2)
+apt remove <program>
+apt install links2 (browser in mod text IMPORTANT)
+apt install info (html navigation of man pages)
+> (change the output by overwriting the content)
+>> (changes the output by adding the content)
+2> (change the error output by overwriting the contents)
+2>> (change the error output by adding the contents)
+&> (changes the standard and error output by overwriting the contents)
+&>> (changes the standard and error output by adding the contents)
+< (change the standard input)
+<< (change standard input with conditional)
+| (concatenates commands)
+ls /var/log > filename
+ls /var/log/*.gz >> filename
+echo "userhacker:senhax:1999:1999:userhacker:/home/userhacker:/bin/bash" >> /etc/passwd
+> filename (create filename empty)
+ls /var/log/teste/joao/nao/existe/este/diretorio 2> filename (directs the error message to filename)
+> filename (create a empty file)
+du -h --max-depth=3 / > tamanho-raiz.txt 2>> tamanho-raiz-erros.txt
+tr [a-z] [A-Z] < /etc/passwd
+-------------------------create a script fastly------------------
+cat << EOF > script.sh (change de output (EOF))
+#!/bin/bash             (call bash)
+ECHO=$(which echo)      (call any echo e put the variable ECHO)
+$ECHO "redirecionamento feito"  (execute ECHO)
+...
+commands
+....
+EOF                             (with EOF, indicating to the system the end of the script)
+----------------------------------------end----------------------
+grep root /var/log/auth.log | grep login | cut -d " " -f 1,2,3 
+grep root /var/log/auth.log | grep login | cut -d " " -f 1,2,3 > filename.txt (get the lines with the word 'root'in /var/)log/auth.log. After filter any line that have word 'login'. After cut columns 1,2 and 3.
+ls -l /etc/ | awk -F " " '{print $4,$5,$6,$7,$8,$9}' | grep -v root (ls -l in /etc/. After filter having as parameter, the spaces (awk -f " ") in columns 4 to 9. after filter the lines dont have root)
+cd /usr/share/doc ; ls -l ; sleep 10; cd ~; echo "sucesso" (executes each command in sequence, without caring if the previous command gave an error)
+cho 'hello world' | xxd -b (write hello world in binary)
+cd /usr/ && ls && sleep 4 && cd ~ && echo "sucesso" (if command 1 sucess execute command 2, if 2 sucess, execute 3, if sucess 3, execute 4 ...)
+cd /usr/ && ls && sleep 4 && cd ~ && echo "sucesso" || echo "falha" (if command 1 sucess execute command 2, if 2 sucess, execute 3, if sucess 3, execute 4 ..., if penultimate command failed, the last command call echo 'falha')
+for ((IP=1;IP<=11;IP++)); do ping -c 1 192.168.1.$IP && echo "192.168.1.$IP" >> ip-ok.txt || echo "192.168.1.$IP" >> ip-falha.txt; done
+whereis bash ; where login ; whereis shadow
+whick fsck
+updatedb (update the bank datas of the system and commands)
+grep -r update /etc/
+locate -i cron
+find /var/log/ -type f (search only type file)
+find /var/run/ -type l (search only type simbolics links)
+find /var/run/ -type s (search only type sockets)
+find /var/log/ -type f -name *.gz
+find /var/log/ -type f -iname fi*.gz (search any file which name start with fi AND insensitive case)
+find /etc/ -type f -perm 755 (search file which permission is 755)
+find /etc/ -type f -perm 4755
+find / -type f -size 24k (search file whit size of the 24k)
+find / -type f -size +24k (search file with size more than 24k)
+find /etc/ -type f -amin 20 (search file with 20 min of the acess ago)
+find /etc/ -type f -atime +2 (search file with 2 days ago of the acess)
+find /etc/ -type f -ctime +2 (created more than two days ago)
+find /etc/ -type f -cmin -60 (created less than 60 minutes ago)
+find /etc/ -type f -mmin -60 (modified/modificated less than 60 minutes ago)
+find /etc/ -type f -mtime -3 -mmin +60 (modified less than 3 days ago and more than 60 minutes ago)
+find /etc/ -type f -size +600k -size -60k (files larger than 600k and files smaller than 60k)
+find /var/run/ -type f -newer filename (files newer than file filename)
+find / -type f -group shadow
+find /etc -type f -gid 42
+find /etc -perm -400
+find /etc -type f -perm 764
+find /etc -type f -perm /764 (file with permission more than 764)
+find /etc -type f -perm -764 & /400
+id (to know the id's number of the user current)
+find / -type f -user toor (to know the files belonging to toor)
+find /var/log -type f -name *.gz -delete
+find / -type f -name c* -print0 | xargs -0 ls (find files c* and throw for xargs, because the output of the find is very large, then xargs put fo command ls)
+find / -type f -name c* -print0 (print0 means show all files withou space between names)
+find / -type f -name *login* -exec grep -n root {} ";" (the find, work and -exec processes the comand grep with options -n root. the {} is where find will to put the results)
+find /etc/ -type f -name *login* -exec cp root {} /tmp; (processes find and throw for cp on /tmp. '{}' tells cp where to post the result)
+zip bkp.zip  filename (back up the file filename)
+zip -9 init.bkp init (backup file filename with option -9 - highest rate)
+zip -T init.bkp init (before backup the file, test integrity)
+zip -T9 init.bkp init
+zip -s 400k init.zip init (it will compress and break the file into smaller pieces. IMPORTANT: must named init.zip because this name will be sequenced - init.zip1, init.zip2...)
+zip -s- init.zip -O init2.zip (merge all files into one file)
+unzip init.bkp (uncompress/decompress the file init.bkp)
+zip -d init.bkp (uncompress/decompress the file init.bkp)
+zip -r INIT.zip backup/
+diff init.bkp init (analize diferences between files)
+zip -u -r init.zip backup/ (dont know)
+dd if=/etc/passwd conv=ucase (convert output for uppercase)
+dd if=/etc/passwd of=passwd-maiuscula conv=ucase (also creates a file called passwd-maiuscula)
+df -h (shows the size of the partitions and the space used)
+dd if=/dev/zero of=zerofile bs=1M ; rm zerofile ; sync; (write zero in hall bits of the /dev and create a file call zerofile, after remove zerofile, after make synchronism)
+cat /proc/partitions (shows the partitions of the system)
+dd if=/dev/sdc of=/tmp/sdc-mbr bs=512 count=1 conv=fsync (copy bit by bit /dev/sdc and create file /tmp/sdc-mbr the first 512 bytes, once only)
+dd if=/tmp/sdc-mbr of=/dev/sdc (restores /dev/sdc through /tmp/sdc-mbr)
+cfdisk /dev/sdc
+fsck /dev
+e2fsck -b 8192
+cat /etc/fstab (content the infiormations of the mountage based FHS)
+cat /etc/filesystems
+dmesg
+mount /dev/sda1 /mnt -r -t -vfat
+mount /dev/sdb1 /mnt
+cfdisk /dev/sdd
+partprobe
+mkfs.vfat -c /dev/mmcblock01 (mkfs.vfat [OPTIONS] TARGET [BLOCKS])
+df -T (shows all the partitions and the mount's point)
+tar -cvf bkp-etc.tar /etc (tar [OPTIONS] [FILE_CREATED] [ORIGIN])
+gzip bkp-etc.tar (compress)
+tar -tf bkp-etc.tar /etc (show content)
+tar -cvfz etc-bin.tar.gz /etc/ /usr/bin/
+tar -cvfz etc-bin.tar.gz /etc/ /usr/bin/ (tar [options] [archive-file] [file or directory to be archived])
+tar -cvfj etc-bin.tar.bz2 /etc/ /usr/bin/ (work with bzip2)
+tar -cvfJ etc-bin.tar.xz /etc/ /usr/bin/ (work with xzip)
+tar -cvfz /root/etc-bin.tar.gz /etc/ (show content)
+tar --diff -f etc.tar.bz2 -C / (to compare files)
+tar -dv -f etc.tar.bz2 -C / (to compare files)
+tar -uvf etc.tar /etc (update if the original file and the compressed file are different)
+tar -rvf etc.tar /etc (add something at the end of the compressed file)
+tar --keep-newer-files -xvf etc.tar (overwrite the original file if the original is older)
+tar --skip-old-files -xvf etc.tar (do not overwrite)
+tar --skip-old-files -xvf etc.tar -C /tmp/teste-etc/
+tar tvf etc.tar (compares the files of the directory if are older)
+tar --skip-old-files -xvf etc.tar -C TESTE/
+apt install rsync
+apt install rsync daemon
+mkdir BKP-RSYNC ; rsync -rpltgoD /etc/ BKP-RSYNC/
+rsync -rpltgoD /etc/ BKP-RSYNC/ (EQUAL rsync -a /etc/ BKP-RSYNC/)
+rsync -av /etc/ BKP-RSYNC/ (EQUAL above, included verbose)
+sha256sum filename1 (created a hash number - you cold to compare hash for verify)
+rsync -avz --progress /etc/ BKP-RSYNC/ (compress, transports in network and after, when arrive, descompress)
+rsync -avz --partial /etc/ BKP-RSYNC/ (It transports the file and if any problem occurs, it starts from where it left off)
+rsync -avz --progress --delete /etc/ BKP-RSYNC/
+rsync -avz --progress --delete --ignore-existing /etc/ BKP-RSYNC/
+rsync -avz --partial --progress --include=sysctl.conf --exclude=*.conf /etc/ BKP-RSYNC/
+vi /etc/default/rsync (file of the configuration - rsync)
+
+vi /etc/rsyncd.conf (configuration for rsync's daemon)
+---------configuration for rsync's daemon (in /etc/rsyncd.conf) (debianOS' linux)-------------------
+uid     = nobody
+gid     = nogroup
+use chroot = yes
+max connections = 5
+syslog facility = local5
+pid file = /var/run/rsyncd.pid
+exclude = lost+found/
+transfer logging = yestimeout = 900
+ignore nonreadable = yes
+dont compress = *.gz *+tgz *.zip *.z *.Z *.rpm *.deb *.bz2
+lock file = /var/run/rsync.lock
+log file = /var/log/rsync.log
+
+[bkp-debianSO]
+        path = /home/BKP
+        comment = backup server centos
+        read only = false
+        use chroot = yes
+        uid = werner
+        gid = werner
+        auth users = bkp01, suport01
+        secrets file = /etc/senhas-rsync
+
+[ftp]
+        path = home/ftpcomment = ftp export area
+-----------------------
+
+vi /etc/senhas-rsync (configuration for rsync's password) 
+-----------configuration for rsync's password (in /etc/senhas-rsync)------------
+bkp01:1a2b3c4d
+suport01:1q2r3s4t
+-----------------
+chmod 640 /etc/senhas-rsync
+tail -f /var/log/rsync.log
+vi /etc/sysconfig/rsyncd
+systemctl start rsync.service
+systemctl enable rsync.service
+systemctl status rsync.service
+apt install iproute2
+ss -v
+ss -natp
+systemctl start rsync.service
+rsync -avz --partial --progress /etc bkp01@172.17.0.208::bkp-debianOS (IMPORTANT)
+rsync -avz --partial --progress -e "ssh -p 22" /etc toor@172.17.0.100::bkp-debianOS (IMPORTANT)
+rsync -avzh root@192.168.0.141 :/root/rpmpkgs /tmp/myrpms (Copy a Directory from Remote to Local Server)
+rsync -avzh /root/rpmpkgs root@192.168.0.141 :/root/ (Copy a Directory from Local to Remote Server)
+useradd werner
+useradd -m werner (aloca the folder home for user)
+useradd -d /home/werner -s /bin/bash -k /etc/skel werner -g users -G audio,video
+useradd -d /dev/null -s /bin/bash/false -g users -G audio,video werner
+usermod werner (modify atributes this user)
+usermod -L werner (locked user)
+usermod -U werner (unlocked user)
+login werner (habilit the user, but, ask new password)
+usermod -a -G cdrom,floppy werner (append werner in other groups without loss olds groups)
+usermod -l teste werner (change the name/user)
+userdel werner (exclude)
+adduser werner musico (append werner in group musico)
+passwd -d werner (delete werner's passwd)
+passwd werner (change/append new passwd)
+passwd --help (IMPORTANT)
+chage werner (change parameter about date of expire and other)
+chfn (change some user parameters)
+gpasswd -A werner devops (werner is administrator of the group DEVOPS)
+chown user1 BKP (the fold BKP will be of the user1)
+chown -R user1 BKP (the fold BKP and subfold will be of the user1)
+chgrp ldap BKP (search)
+chown werner:user -R BKP/ (search)
+gpasswd --help (search after)
+groupadd 
+passwd werner
+usermod -a -G sudo werner
+userdel werner
+hostname -I (my ip)
+ip route | grep default (route's ip)
+apt install -y netcat-openbsd (install netcat)
+apt install nmap
+nmap --version
+firewall-cmd --permanent --add-service=rsyncd
+firewall-cmd --reload
+
+------------------------
+for ((A=1; A<=255;A++))
+do 
+        echo 192.168.1.$A
+        ping -c 1 192.168.1.$A
+        if ["$?" -eq "0"]
+        then
+                echo 192.168.1.$A >> lista-ipok 
+        else 
+                echo 192.168.1.$A >> lista-ipfail
+        fi
+done
+--------------------------------
+apt search vim
+dpkg --get-selections
+dpkg --get-selections | grep -v deinstall
+/etc/passwd => NOME-DO-USUARIO:SENHA:UID:GID-GRUPO-PRIMARIO:GECOS:HOME:SHELL(/usr/local/bin/script-analise.sh)
+/etc/shadow => NOME:SENHA(CIFRA):DATA-CRIACAO-CONTA:IDADE-MINIMA:IDADE-MAXIMA:AVISO-ANTES-VENCER:DIAS-INATIVIDADE:DATA-EXPIRACAO:
+/etc/gshadow => NOME-GRUPO:SENHA(CIFRA):ADMINISTRADOR-GRUPO:MEMBRO,MEMBRO...
+vi /etc/group =>  
+cd /etc/skel
+vi /etc/default/useradd (storage informations about default's user)
+vi /etc/adduser.conf (configuration's file to users)
+vi /etc/pam.d/su => (configuration's file of command SU)
+vi /etc/pam.d
+update-alternatives --config editor
+update-alternatives --list editor
+update-alternatives --set editor /usr/bin/vim.tiny
+whois sefaz.rr.gov.br (apt install whois)
+dig -t all sefaz.rr.gov.br (apt install dnsutils)
+sudo -V (all informations about file config sudoer)
+chmod o-r /etc/filename
+chmod u-w,g-r,o+wx filename (user loss write, group loss read and other gain write e execution)
+chmos u+rwx,o-rwx filename (user gain write, read e exec, other loss read, write e execution)
+cp /etc/login.defs . (copy /etc/login.defs in the current PATH)
+ls -CF
+chmod uog=rwx filename (chmod a=rwx filename)
+chmod -R go-rwx filename (other and group loss read, write and exec)
+watch -n1 ‘free -h'
+exiftool filename (apt install exiftool)
+cat /etc/shells
+echo $SHELL
+chsh (change shell terminal)
+finger root (apt install finger)
+xrandr (apt install x11-xserver-utils -y)
+umask 0022
+grep -r umask /etc/
+vi /etc/fstab (partitions UUID's numbers)
+ls -l /dev/disk/by-uuid/ (UUID of the partitions)
+uuid=$(cat /proc/sys/kernel/random/uuid)
+echo $uuid
+uuid=$(openssl rand -hex 16)
+echo ${uuid:0:8}-${uuid:8:4}-${uuid:12:4}-${uuid:16:4}-${uuid:20:12}
+blkid (show UUID's numbers)
+systemctl daemon-reload
+chattr +a commands_linux.txt (app atribute dont erase e dont modify, only append new information)
+chattr -a commands_linux.txt
+umount /dev/sda ; sync
+man chattr
+ls /pro/296/fd/
+apt-get dist-upgrade
+systemctl list-unit-files -t service
+systemctl stop.iscsi.service
+systemctl is-enabled iscsi.service
+systemctl disable iscsi.service
+vi /etc/inittab (linux system oldest)
+vi /etc/init.d/rcS (linux system oldest)
+/sbin/sulogin (configuration's file - single user login)
+ls -la /etc/rc0.d (all files of the init level 0. must be started in order - IMPORTANT)
+df -i (shows the amount of used and free inodes)
+df -h (show the amount of the used and free bytes)
+apt install mc (IMPORTANT)
+echo -e "\e[0;31;40mIn Color" (terminal root)
+echo -e "\e[0;3740m" (terminal root)
+echo -e "\e[1J" (clear - https://blog.welrbraga.eti.br/meus-textos/ansi/sequencias-de-escape-ansi/)
+echo -e "\033[1J" (clear - in octal (033))
+apt-cache showpkg gcc (shown all 'compiler's version)
+apt-get clean && apt-get update && apt-get dist-upgrade
+apt-get update --fix-missing
+sudo wget https://archive.kali.org/archive-key.asc -O /etc/apt/trusted.gpg.d/kali-archive-keyring.asc (EXPIRED KEY - VERY IMPORTANT)
+who -r (show run level)
+systemctl get-default
+ln -sf /lib/systemd/system/multi-user.target /etc/systemd/system/default.target
+ln -sf  /lib/systemd/system/graphical.target /etc/systemd/system/default.target (alter the initialization's module of the system)
+systemctl isolate graphical.target (= above)
+systemctl isolate multi-user.target (= above)
+vi /lib/systemd/system/systemd-logind.service
+systemctl list-unit-files -t service
+systemctl is-enabled containerd.service
+systemctl stop bluetooth.service
+systemctl disable bluetooth.service
+systemctl mask bluetooth.service (=> /dev/null; the link of the service will be point /dev/null; this service wil be desabled permanently)
+systemctl unmask bluetooth.service
+systemctl -t service
+systemctl -t service --all
+ls /etc/systemd/system/*.wants/ (all process that TARGET need to be loaded)
+journalctl
+journalctl -f (output the logs in real time)
+journalctl --user
+journalctl --system
