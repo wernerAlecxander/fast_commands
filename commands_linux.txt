@@ -521,3 +521,6 @@ sudo rm -rf /var/lib/apt/lists/*
 # Recriar
 sudo apt update
 -----------------
+# INSTALAR INTERFACE GRÁFICA NO WSL (WINDOWS SUBSYSTEM LINUX)
+sudo apt install kali-win-kex
+-----------
