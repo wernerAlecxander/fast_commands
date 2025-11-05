@@ -475,5 +475,49 @@ sudo curl https://archive.kali.org/archive-keyring.gpg -o /usr/share/keyrings/ka
 -------
 sha1sum /usr/share/keyrings/kali-archive-keyring.gpg
 -------
-gpg --no-default-keyring --keyring /usr/share/keyrings/kali-archive-keyring.gpg -k
---------
+# Baixar e importar as chaves do Kali
+wget -q -O - https://archive.kali.org/archive-key.asc | sudo apt-key add -
+
+# Ou usar o método mais moderno
+wget -q -O - https://archive.kali.org/archive-key.asc | sudo gpg --dearmor -o /etc/apt/trusted.gpg.d/kali-archive-keyring.gpg
+
+# Atualizar repositórios
+sudo apt update
+-----------
+# Instalar o keyring oficial do Kali
+sudo apt install kali-archive-keyring
+
+# Forçar atualização das chaves
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys <KEY_ID>
+
+# Atualizar
+sudo apt update
+-----------
+# Remover chaves antigas
+sudo rm /etc/apt/trusted.gpg.d/kali-archive-keyring.gpg
+
+# Reinstalar keyring
+sudo apt install --reinstall kali-archive-keyring
+
+# Atualizar
+sudo apt update && sudo apt upgrade
+--------------
+# Editar sources.list para adicionar [trusted=yes] (não recomendado para produção)
+sudo nano /etc/apt/sources.list
+
+# Adicionar [trusted=yes] antes da URL:
+# deb [trusted=yes] http://http.kali.org/kali kali-rolling main contrib non-free
+
+# Salvar (Ctrl+O) e sair (Ctrl+X)
+sudo apt update
+------------
+# Limpar cache do apt
+sudo apt clean
+sudo apt autoclean
+
+# Remover listas antigas
+sudo rm -rf /var/lib/apt/lists/*
+
+# Recriar
+sudo apt update
+-----------------
