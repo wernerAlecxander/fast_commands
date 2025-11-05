@@ -468,3 +468,12 @@ journalctl
 journalctl -f (output the logs in real time)
 journalctl --user
 journalctl --system
+======================https://www.kali.org/blog/new-kali-archive-signing-key/=============
+sudo wget https://archive.kali.org/archive-keyring.gpg -O /usr/share/keyrings/kali-archive-keyring.gpg
+--------
+sudo curl https://archive.kali.org/archive-keyring.gpg -o /usr/share/keyrings/kali-archive-keyring.gpg
+-------
+sha1sum /usr/share/keyrings/kali-archive-keyring.gpg
+-------
+gpg --no-default-keyring --keyring /usr/share/keyrings/kali-archive-keyring.gpg -k
+--------

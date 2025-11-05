@@ -124,3 +124,7 @@ npm install -g prettier
 npm install prettier -D --save-exact
 npm run format (npx prettier --write .)
 npm install zod
+---------------------------------- IMPORTANT-------------------------------
+winget install --id=CoreyButler.NVMforWindows --exact --accept-package-agreements
+-----------------------------------------------------------------------------
+npm update -g create-next-app

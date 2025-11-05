@@ -76,33 +76,5 @@ get-cimInstance -ClassName Win32_StartupCommand
 #dism /online /cleanup-image /scanhealth
 #dism /online /cleanup-image /checkhealth
 #dism /online /cleanup-image /restorehealth
-#---------------------------------------------------------------------
-# Baixar as mudanças do repositório remoto
-git pull origin master
-
-# Depois fazer o push
-git push origin master
-# Verificar o status
-git status
-
-# Fazer pull com rebase para manter histórico linear
-git pull --rebase origin master
-
-# Se houver conflitos, resolver e continuar
-git add .
-git rebase --continue
-
-# Depois fazer push
-git push origin master
-# Verificar o status
-git status
-
-# Fazer pull com rebase para manter histórico linear
-git pull --rebase origin master
-
-# Se houver conflitos, resolver e continuar
-git add .
-git rebase --continue
-
-# Depois fazer push
-git push origin master
+Get-WinEvent -ListLog *
+Get-WinEvent -LogName System | out-host -paging
