@@ -521,6 +521,10 @@ sudo rm -rf /var/lib/apt/lists/*
 # Recriar
 sudo apt update
 -----------------
+#instalar KALI LINUX via powershell
+wsl --install -d kali-linux
 # INSTALAR INTERFACE GRÁFICA NO WSL (WINDOWS SUBSYSTEM LINUX)
 sudo apt install kali-win-kex
+kex --win -s
+sudo apt install kali-linux-large
 -----------
